@@ -1,0 +1,154 @@
+<div class="auth-page">
+  <div class="login-card">
+    <div class="visual-panel">
+      <div class="visual-overlay"></div>
+    </div>
+
+    <div class="form-panel">
+      <div class="form-inner">
+        <div class="brand">
+          <div class="brand-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+              <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+            </svg>
+          </div>
+          <span class="brand-name">AutoDiagnose Pro</span>
+        </div>
+
+        <h1 class="form-title">Créer un compte</h1>
+        <p class="form-subtitle">Rejoignez AutoDiagnose Pro pour diagnostiquer vos véhicules.</p>
+
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+          <div class="field-group">
+            <label>Je m'inscris en tant que</label>
+            <div class="radio-group">
+              <label>
+                <input type="radio" formControlName="role" value="client" />
+                <span>Client</span>
+              </label>
+              <label>
+                <input type="radio" formControlName="role" value="garagiste" />
+                <span>Garagiste </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="fullName">Nom complet</label>
+            <div class="input-wrap">
+              <input
+                id="fullName"
+                type="text"
+                formControlName="fullName"
+                [class.invalid]="signupForm.get('fullName')?.invalid && signupForm.get('fullName')?.touched"
+                placeholder="nom et prénom"
+              />
+            </div>
+            <div class="error" *ngIf="signupForm.get('fullName')?.hasError('required') && signupForm.get('fullName')?.touched">
+              Le nom est obligatoire.
+            </div>
+            <div class="error" *ngIf="signupForm.get('fullName')?.hasError('minlength') && signupForm.get('fullName')?.touched">
+              Minimum 3 caractères.
+            </div>
+          </div>
+
+          <div class="field-group" *ngIf="signupForm.get('role')?.value === 'garagiste'">
+            <label for="garageName">Nom du garage</label>
+            <div class="input-wrap">
+              <input
+                id="garageName"
+                type="text"
+                formControlName="garageName"
+                placeholder="Ex. Garage Auto Plus"
+              />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="email">Email</label>
+            <div class="input-wrap">
+              <input
+                id="email"
+                type="email"
+                formControlName="email"
+                [class.invalid]="signupForm.get('email')?.invalid && signupForm.get('email')?.touched"
+                placeholder="exemple@email.com"
+              />
+            </div>
+            <div class="error" *ngIf="signupForm.get('email')?.hasError('required') && signupForm.get('email')?.touched">
+              L'email est obligatoire.
+            </div>
+            <div class="error" *ngIf="signupForm.get('email')?.hasError('email') && signupForm.get('email')?.touched">
+              Email invalide.
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="password">Mot de passe</label>
+            <div class="input-wrap input-wrap-password">
+              <input
+                id="password"
+                [type]="showPassword ? 'text' : 'password'"
+                formControlName="password"
+                [class.invalid]="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
+                placeholder="••••••••"
+              />
+              <button type="button" class="input-icon" (click)="togglePasswordVisibility()" aria-label="Afficher le mot de passe">
+                <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+                <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>
+                </svg>
+              </button>
+            </div>
+            <div class="error" *ngIf="signupForm.get('password')?.hasError('required') && signupForm.get('password')?.touched">
+              Le mot de passe est obligatoire.
+            </div>
+            <div class="error" *ngIf="signupForm.get('password')?.hasError('minlength') && signupForm.get('password')?.touched">
+              Minimum 6 caractères.
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="confirmPassword">Confirmer le mot de passe</label>
+            <div class="input-wrap input-wrap-password">
+              <input
+                id="confirmPassword"
+                [type]="showConfirmPassword ? 'text' : 'password'"
+                formControlName="confirmPassword"
+                [class.invalid]="signupForm.hasError('passwordMismatch') && signupForm.get('confirmPassword')?.touched"
+                placeholder="••••••••"
+              />
+              <button type="button" class="input-icon" (click)="toggleConfirmPasswordVisibility()" aria-label="Afficher">
+                <svg *ngIf="!showConfirmPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+                <svg *ngIf="showConfirmPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>
+                </svg>
+              </button>
+            </div>
+            <div class="error" *ngIf="signupForm.get('confirmPassword')?.hasError('required') && signupForm.get('confirmPassword')?.touched">
+              Veuillez confirmer le mot de passe.
+            </div>
+            <div class="error" *ngIf="signupForm.hasError('passwordMismatch') && signupForm.get('confirmPassword')?.touched">
+              Les mots de passe ne correspondent pas.
+            </div>
+          </div>
+
+          <button class="btn btn-signin" type="submit" [disabled]="isSubmitting">
+            {{ isSubmitting ? 'Inscription...' : 'Créer mon compte' }}
+          </button>
+
+          <p class="error global" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+          <p class="form-footer">
+            Vous avez déjà un compte ?
+            <a routerLink="/login" class="link">Se connecter</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
