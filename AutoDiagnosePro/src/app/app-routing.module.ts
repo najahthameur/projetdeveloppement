@@ -16,6 +16,7 @@ import { AfficheVehiculeComponent } from './affiche-vehicule/affiche-vehicule.co
 import { DetailClientComponent } from './detail-client/detail-client.component';
 import { UpdateCompteComponent } from './update-compte/update-compte.component';
 import { MotdepasseOublieComponent } from './motdepasse-oublie/motdepasse-oublie.component';
+import { MesvehiculeComponent } from './mesvehicule/mesvehicule.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent  },
@@ -23,6 +24,8 @@ const routes: Routes = [
    { path: 'afficherclient', component: AfficherClientsComponent },
   { path: 'ajouterclient', component: AjouteClientsComponent},
   {path: 'dashboardclient',component: DashboardClientComponent},
+      { path: 'mes-vehicules', component: MesvehiculeComponent },
+
   {path: 'modifierprofil',component: ModifierProfilComponent},
   {path: 'editprofil/:id',component: EditProfileComponent},
   {path: 'modifiermotdepasse',component: ModifierMotdepasseComponent},
@@ -30,7 +33,7 @@ const routes: Routes = [
     {path: 'listevehicules',component: AfficheVehiculeComponent},
     { path: 'detailclient/:cin', component: DetailClientComponent },
       { path: 'motpasseoublie', component: MotdepasseOublieComponent },
-    {path: 'modifiervehicule/:id',component: ModifierVehiculeComponent},
+      {path: 'modifiervehicule/:id',component: ModifierVehiculeComponent},
   {path: 'modifiercompte/:id',component: UpdateCompteComponent},
  { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },

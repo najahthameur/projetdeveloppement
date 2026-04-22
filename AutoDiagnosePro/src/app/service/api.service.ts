@@ -114,4 +114,6 @@ deleteUser(id: string): Observable<any> {
 resetPassword(data: any): Observable<any> {
   return this.http.post(`${this.url1}/reset-password`, data);
 }
+
+
 }

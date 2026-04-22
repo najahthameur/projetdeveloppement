@@ -94,6 +94,62 @@ router.get('/clients/:id', async (req, res) => {
   }
 });
 
+
+
 // supprimer client par CIN
 router.delete('/clients/:cin', clientController.deleteClientByCin);
+
+router.get('/my-dashboard', auth, async (req, res) => {
+  try {
+    if (req.user.role !== "client") {
+      return res.status(403).json({ message: "Accès refusé" });
+    }
+
+    const client = await Client.findById(req.user.id)
+      .populate("garage", "nom Nomgarage email");
+
+    if (!client) {
+      return res.status(404).json({ message: "Client introuvable" });
+    }
+
+    const voitures = await Voiture.find({ client: client._id });
+
+    res.json({
+      client: {
+        cin: client.cin,
+        nom: client.nom,
+        prenom: client.prenom,
+        email: client.email,
+        telephone: client.telephone,
+        adresse: client.adresse
+      },
+      garage: client.garage,
+      voitures
+    });
+
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+router.get('/my-voitures', auth, async (req, res) => {
+  try {
+    if (req.user.role !== "client") {
+      return res.status(403).json({ message: "Accès refusé" });
+    }
+
+    const voitures = await Voiture.find({ client: req.user.id })
+          .populate("client", "nom prenom email")
+      .populate("garage", "nom Nomgarage email");
+  
+
+    res.json(voitures);
+
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+
+
+
 module.exports = router;

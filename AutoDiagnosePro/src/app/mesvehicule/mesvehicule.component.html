@@ -1,0 +1,72 @@
+<div class="dg-root">
+
+  <!-- SIDEBAR -->
+  <aside class="dg-sidebar">
+
+    <div class="dg-logo">🚗 AutoDiagnose</div>
+
+    <nav class="dg-nav">
+
+      <a [routerLink]="['/dashboard-client']">🏠 Dashboard</a>
+
+      <!-- 🔥 ICI IMPORTANT -->
+      <a class="dg-active">🛠 Mes véhicules</a>
+
+      <a (click)="logout()">🚪 Déconnexion</a>
+
+    </nav>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="dg-main">
+
+    <h2>🚗 Mes véhicules</h2>
+
+    <!-- loading -->
+    <p *ngIf="loading">Chargement...</p>
+
+    <!-- LISTE -->
+    <div class="car-card" *ngFor="let v of voitures">
+
+      <h3>{{ v.marque }} {{ v.modele }}</h3>
+
+      <p><b>📌 Matricule :</b> {{ v.matricule }}</p>
+
+      <p><b>⚙️ État :</b> {{ v.etat }}</p>
+
+      <!-- 👇 IMPORTANT : diagnostic du garagiste -->
+      <div class="diagnostic">
+        <b>🩺 Diagnostic du garage :</b>
+        <p>
+          {{ v.diagnostic ? v.diagnostic : 'Aucun diagnostic encore' }}
+        </p>
+          <!-- 👇 GARAGISTE QUI A FAIT LE DIAGNOSTIC -->
+        <!-- <small>
+          👨‍🔧 Par : {{ v.garage?.nom }} 
+        </small> -->
+        <b> 👨‍🔧 Par:</b>
+        <p>
+           {{ v.garage?.nom }}
+           {{ v.garage?.Nomgarage }}
+        </p>
+
+
+      </div>
+
+      <!-- client info -->
+      <p>
+        <b>👤 Nom et Prenom :</b>
+        {{ v.client?.prenom }} {{ v.client?.nom }}
+      </p>
+
+    </div>
+
+    <!-- vide -->
+    <div *ngIf="voitures.length === 0 && !loading">
+      ❌ Aucune voiture trouvée
+    </div>
+
+  </main>
+
+</div>

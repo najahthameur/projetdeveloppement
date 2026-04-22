@@ -73,20 +73,36 @@ export class DashboardClientComponent  implements OnInit{
 this.lastName = user.nom || 'Client';
 this.firstName = user.prenom || '';
 this.lastName = user.nom || '';
-    this.loadClients();
+    // this.loadClients();
+      this.loadVoitures();
+
 
 }
-  loadClients() {
-    this.apiService.getClients().subscribe({
-      next: (data: any) => {
-        this.clients = data;
-        console.log("CLIENTS =", data);
-      },
-      error: (err) => {
-        console.log("ERREUR =", err);
-      }
-    });
-  }
+voitures: any[] = [];
+
+loadVoitures() {
+  this.apiService.getMyVoitures().subscribe({
+    next: (data) => {
+      this.voitures = data;
+      console.log("🚗 voitures client =", data);
+    },
+    error: (err) => {
+      console.log("❌ erreur voitures =", err);
+    }
+  });
+}
+
+  // loadClients() {
+  //   this.apiService.getClients().subscribe({
+  //     next: (data: any) => {
+  //       this.clients = data;
+  //       console.log("CLIENTS =", data);
+  //     },
+  //     error: (err) => {
+  //       console.log("ERREUR =", err);
+  //     }
+  //   });
+  // }
 
   badgeClass(status: string): string {
     switch (status) {
@@ -114,5 +130,7 @@ goToProfile() {
 goToPassword() {
   this.router.navigate(['/modifiermotdepasse']);
 }
-
+goToVehicules() {
+  this.router.navigate(['/mes-vehicules']);
+}
 }

@@ -204,8 +204,8 @@ if (!client) {
 
     // récupérer voitures liées au CIN
     const voitures = await Voiture.find({ cin })
-      .populate('client', 'nom prenom cin');
-
+      .populate('client', 'nom prenom cin')
+       .populate('garage', 'nom Nomgarage email');
     // si aucune voiture
    if (voitures.length === 0) {
       return res.status(404).json({

@@ -25,6 +25,7 @@ import { AfficheVehiculeComponent } from './affiche-vehicule/affiche-vehicule.co
 import { DetailClientComponent } from './detail-client/detail-client.component';
 import { UpdateCompteComponent } from './update-compte/update-compte.component';
 import { MotdepasseOublieComponent } from './motdepasse-oublie/motdepasse-oublie.component';
+import { MesvehiculeComponent } from './mesvehicule/mesvehicule.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { MotdepasseOublieComponent } from './motdepasse-oublie/motdepasse-oublie
     DetailClientComponent,
     UpdateCompteComponent,
     MotdepasseOublieComponent,
+    MesvehiculeComponent,
    
   ],
   imports: [
