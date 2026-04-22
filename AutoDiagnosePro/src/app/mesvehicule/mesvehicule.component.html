@@ -7,7 +7,7 @@
 
     <nav class="dg-nav">
 
-      <a [routerLink]="['/dashboard-client']">🏠 Dashboard</a>
+      <a [routerLink]="['/dashboardclient']">🏠 Dashboard</a>
 
       <!-- 🔥 ICI IMPORTANT -->
       <a class="dg-active">🛠 Mes véhicules</a>
@@ -36,30 +36,27 @@
       <p><b>⚙️ État :</b> {{ v.etat }}</p>
 
       <!-- 👇 IMPORTANT : diagnostic du garagiste -->
-      <div class="diagnostic">
-        <b>🩺 Diagnostic du garage :</b>
-        <p>
-          {{ v.diagnostic ? v.diagnostic : 'Aucun diagnostic encore' }}
-        </p>
-          <!-- 👇 GARAGISTE QUI A FAIT LE DIAGNOSTIC -->
-        <!-- <small>
-          👨‍🔧 Par : {{ v.garage?.nom }} 
-        </small> -->
-        <b> 👨‍🔧 Par:</b>
-        <p>
-           {{ v.garage?.nom }}
-           {{ v.garage?.Nomgarage }}
-        </p>
+   <div class="diagnostic">
+  <b>🩺 Diagnostic :</b>
+  <p>{{ v.diagnostic ? v.diagnostic : 'Aucun diagnostic encore' }}</p>
 
+  <b>👨‍🔧 Par :</b>
 
-      </div>
+   <p>
+        <b>👤 Nom du garagiste :</b>
+        {{ v.garage?.nom }}  
+      </p>
+
+  <p><b>👤 Nom du garage:</b> 
+    {{ v.garage?.Nomgarage }}</p>
+</div>
 
       <!-- client info -->
       <p>
-        <b>👤 Nom et Prenom :</b>
+        <b>👤 Nom :</b>
         {{ v.client?.prenom }} {{ v.client?.nom }}
       </p>
-
+      
     </div>
 
     <!-- vide -->

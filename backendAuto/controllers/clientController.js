@@ -130,8 +130,8 @@ exports.getMyVoitures = async (req, res) => {
     }
 
     const voitures = await Voiture.find({ client: req.user.id })
-      .populate("client", "cin nom prenom");
-
+      .populate("client", "cin nom prenom")
+      .populate("garage", "nom Nomgarage email");
     res.json(voitures);
 
   } catch (err) {

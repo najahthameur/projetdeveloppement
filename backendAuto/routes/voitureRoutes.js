@@ -31,10 +31,11 @@ router.put('/voiture/diagnostic/:id', auth, async (req, res) => {
       req.params.id,
       {
         diagnostic: diagnostic,
-        etat: etat
+        etat: etat,
+         garage: req.user.id
       },
       { new: true }
-    );
+    ).populate("garage", "nom Nomgarage email");;
 
     if (!voiture) {
       return res.status(404).json({ message: "Voiture introuvable" });
