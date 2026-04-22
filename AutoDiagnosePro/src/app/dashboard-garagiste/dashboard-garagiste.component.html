@@ -1,0 +1,407 @@
+<div class="dg-root">
+
+  <!-- ░░ SIDEBAR ░░ -->
+  <aside class="dg-sidebar">
+
+    <div class="dg-logo">
+      <div class="dg-logo-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+          <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+        </svg>
+      </div>
+      <div class="dg-logo-text">
+        <span class="dg-logo-name">AutoDiagnose</span>
+        <span class="dg-logo-sub">Pro Garage</span>
+      </div>
+    </div>
+
+    <div class="dg-garage-badge">
+      <div class="dg-garage-dot"></div>
+      <span>Garage Central Tunis</span>
+    </div>
+
+    <nav class="dg-nav">
+      <span class="dg-nav-label">PRINCIPAL</span>
+      <a class="dg-nav-item dg-active">
+        <div class="dg-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <span>Tableau de bord</span>
+        <div class="dg-active-bar"></div>
+      </a>
+   
+      <a class="dg-nav-item" (click)="goToClients()">
+        <div class="dg-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <span>Affiche clients</span>
+        <!-- <span class="dg-count">18</span> -->
+      </a>
+      <a class="dg-nav-item" (click)="goToVoitures()">
+  <div class="dg-nav-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17">
+      <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/>
+    </svg>
+  </div>
+  <span>Liste véhicules</span>
+</a>
+      <a class="dg-nav-item" (click)="goToAjouterClient()" >
+        <div class="dg-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <span>Ajouter clients</span>
+        <!-- <span class="dg-count">18</span> -->
+      </a>
+      <!-- <a class="dg-nav-item" [routerLink]="['/ajoutervoiture']">
+  <div class="dg-nav-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17">
+      <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+    </svg>
+  </div>
+
+  <span>Ajouter véhicule</span>
+</a> -->
+<!-- <a class="dg-nav-item" [routerLink]="['/modifiercompte', user._id]">
+
+  <div class="dg-nav-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17">
+      <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5z"/>
+      <path d="M4 22c0-4 3.6-7 8-7s8 3 8 7"/>
+    </svg>
+  </div>
+
+  <span>Modifier mon  compte </span>
+
+</a> -->
+      <!-- <a class="dg-nav-item">
+        <div class="dg-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <span>Interventions</span>
+        <span class="dg-count dg-count-hot">2</span>
+      </a> -->
+
+      <span class="dg-nav-label" style="margin-top:1.5rem">OUTILS</span>
+      <a class="dg-nav-item">
+        <div class="dg-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+        </div>
+        <span>Diagnostics OBD</span>
+      </a>
+      <a class="dg-nav-item">
+        <div class="dg-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <span>Planning</span>
+      </a>
+      <a class="dg-nav-item">
+        <div class="dg-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <span>Facturation</span>
+      </a>
+        <button class="dg-logout" (click)="logout()">
+    Déconnexion
+  </button>
+    </nav>
+  
+  
+</aside>
+
+  <!-- ░░ MAIN ░░ -->
+  <main class="dg-main">
+
+    <!-- TOPBAR -->
+    <header class="dg-topbar">
+      <div>
+        <h1 class="dg-page-title">Tableau de bord</h1>
+        <p class="dg-page-sub">Mercredi 12 mars 2025 · Garage Central Tunis</p>
+      </div>
+      <div class="dg-topbar-actions">
+        <button class="dg-btn-outline"   style="margin-top: 18px;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+      <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+    </svg>
+    <span class="dg-notif-dot"></span>
+  </button>
+        <!-- <button class="dg-btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Nouvelle intervention
+        </button> -->
+   
+       
+          <div class="dg-user">
+
+   <!-- Icône Settings -->
+ <button class="dg-btn-settings" (click)="goToModifierCompte()" title="Modifier mon compte">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06
+                 a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09
+                 A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83
+                 l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09
+                 A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83
+                 l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09
+                 a1.65 1.65 0 0 0 1 1.51a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83
+                 l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09
+                 a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+<!-- Icône Supprimer compte -->
+<button class="dg-btn-delete-top" (click)="ouvrirConfirmDelete()" title="Supprimer mon compte">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+    <polyline points="3 6 5 6 21 6"/>
+    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+    <path d="M10 11v6M14 11v6"/>
+    <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+  </svg>
+</button>
+
+  <div>
+    <p>{{ lastName }}</p>
+  </div>
+    
+</div>
+      </div>
+    </header>
+
+    <!-- KPI CARDS -->
+    <div class="dg-kpi-row">
+
+      <div class="dg-kpi dg-kpi-1">
+        <div class="dg-kpi-top">
+          <span class="dg-kpi-label">Clients actifs</span>
+          <div class="dg-kpi-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+        </div>
+        <span class="dg-kpi-val">18</span>
+        <div class="dg-kpi-trend up">↑ +3 ce mois</div>
+      </div>
+
+      <div class="dg-kpi dg-kpi-2">
+        <div class="dg-kpi-top">
+          <span class="dg-kpi-label">En cours</span>
+          <div class="dg-kpi-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+        </div>
+        <span class="dg-kpi-val">2</span>
+        <div class="dg-kpi-live"><span class="dg-pulse"></span> En temps réel</div>
+      </div>
+
+      <div class="dg-kpi dg-kpi-3">
+        <div class="dg-kpi-top">
+          <span class="dg-kpi-label">Terminées ce mois</span>
+          <div class="dg-kpi-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+        <span class="dg-kpi-val">34</span>
+        <div class="dg-kpi-trend up">↑ +12% vs mars 2024</div>
+      </div>
+
+      <div class="dg-kpi dg-kpi-4">
+        <div class="dg-kpi-top">
+          <span class="dg-kpi-label">CA ce mois</span>
+          <div class="dg-kpi-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+        </div>
+        <span class="dg-kpi-val">4 850<small>DT</small></span>
+        <div class="dg-kpi-trend up">↑ +8% vs fév.</div>
+      </div>
+
+    </div>
+
+    <!-- GRID PRINCIPAL -->
+    <div class="dg-grid">
+
+      <!-- Interventions en cours -->
+      <div class="dg-card dg-card-interventions">
+        <div class="dg-card-head">
+          <div class="dg-card-title-group">
+            <span class="dg-card-eyebrow">ATELIER</span>
+            <h2 class="dg-card-title">Interventions en cours</h2>
+          </div>
+          <a class="dg-link-all">Tout voir →</a>
+        </div>
+
+        <div class="dg-intervention-item">
+          <div class="dg-car-thumb orange">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/></svg>
+          </div>
+          <div class="dg-int-info">
+            <span class="dg-int-title">Diagnostic freins avant</span>
+            <span class="dg-int-meta">Ahmed Mansour · Renault Clio 2017 · TN 654 321</span>
+            <div class="dg-progress-bar">
+              <div class="dg-progress-fill" style="width: 65%"></div>
+            </div>
+            <span class="dg-progress-label">65% — Depuis 09h00</span>
+          </div>
+          <span class="dg-tag dg-tag-progress">En cours</span>
+        </div>
+
+        <div class="dg-int-divider"></div>
+
+        <div class="dg-intervention-item">
+          <div class="dg-car-thumb blue">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/></svg>
+          </div>
+          <div class="dg-int-info">
+            <span class="dg-int-title">Vidange moteur + filtre</span>
+            <span class="dg-int-meta">Sara Ben Ali · Peugeot 208 2020 · TN 112 233</span>
+            <div class="dg-progress-bar">
+              <div class="dg-progress-fill" style="width: 30%"></div>
+            </div>
+            <span class="dg-progress-label">30% — Depuis 10h30</span>
+          </div>
+          <span class="dg-tag dg-tag-progress">En cours</span>
+        </div>
+      </div>
+
+      <!-- Planning du jour -->
+      <div class="dg-card dg-card-planning">
+        <div class="dg-card-head">
+          <div class="dg-card-title-group">
+            <span class="dg-card-eyebrow">AUJOURD'HUI</span>
+            <h2 class="dg-card-title">Planning</h2>
+          </div>
+          <a class="dg-link-all">Gérer →</a>
+        </div>
+
+        <div class="dg-timeline">
+          <div class="dg-tl-item dg-tl-done">
+            <div class="dg-tl-time">09:00</div>
+            <div class="dg-tl-dot"></div>
+            <div class="dg-tl-content">
+              <span class="dg-tl-name">Ahmed Mansour</span>
+              <span class="dg-tl-desc">Renault Clio — Freins</span>
+            </div>
+            <span class="dg-tag dg-tag-progress">En cours</span>
+          </div>
+          <div class="dg-tl-item dg-tl-done">
+            <div class="dg-tl-time">10:30</div>
+            <div class="dg-tl-dot"></div>
+            <div class="dg-tl-content">
+              <span class="dg-tl-name">Sara Ben Ali</span>
+              <span class="dg-tl-desc">Peugeot 208 — Vidange</span>
+            </div>
+            <span class="dg-tag dg-tag-progress">En cours</span>
+          </div>
+          <div class="dg-tl-item">
+            <div class="dg-tl-time">14:00</div>
+            <div class="dg-tl-dot dg-tl-dot-future"></div>
+            <div class="dg-tl-content">
+              <span class="dg-tl-name">Mohamed Trabelsi</span>
+              <span class="dg-tl-desc">VW Golf — Révision complète</span>
+            </div>
+            <span class="dg-tag dg-tag-planned">Planifié</span>
+          </div>
+          <div class="dg-tl-item">
+            <div class="dg-tl-time">16:00</div>
+            <div class="dg-tl-dot dg-tl-dot-future"></div>
+            <div class="dg-tl-content">
+              <span class="dg-tl-name">Ines Chaouech</span>
+              <span class="dg-tl-desc">Toyota Yaris — Diagnostic</span>
+            </div>
+            <span class="dg-tag dg-tag-planned">Planifié</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diagnostics OBD récents -->
+      <div class="dg-card dg-card-diag">
+        <div class="dg-card-head">
+          <div class="dg-card-title-group">
+            <span class="dg-card-eyebrow">OBD-II</span>
+            <h2 class="dg-card-title">Diagnostics récents</h2>
+          </div>
+        </div>
+        <div class="dg-diag-list">
+          <div class="dg-diag-row">
+            <code class="dg-code dg-code-red">C0034</code>
+            <div class="dg-diag-info">
+              <span class="dg-diag-title">Pression freins avant insuffisante</span>
+              <span class="dg-diag-meta">Renault Clio · Ahmed M. · 11/03</span>
+            </div>
+            <span class="dg-tag dg-tag-progress">Actif</span>
+          </div>
+          <div class="dg-diag-row">
+            <code class="dg-code dg-code-yellow">P0171</code>
+            <div class="dg-diag-info">
+              <span class="dg-diag-title">Mélange trop pauvre — capteur O2</span>
+              <span class="dg-diag-meta">Peugeot 308 · Karim J. · 09/03</span>
+            </div>
+            <span class="dg-tag dg-tag-done">Résolu</span>
+          </div>
+          <div class="dg-diag-row">
+            <code class="dg-code dg-code-yellow">B0080</code>
+            <div class="dg-diag-info">
+              <span class="dg-diag-title">Capteur pneu avant gauche</span>
+              <span class="dg-diag-meta">Toyota Yaris · Ines C. · 08/03</span>
+            </div>
+            <span class="dg-tag dg-tag-done">Résolu</span>
+          </div>
+          <div class="dg-diag-row">
+            <code class="dg-code dg-code-blue">U0100</code>
+            <div class="dg-diag-info">
+              <span class="dg-diag-title">Perte communication ECU</span>
+              <span class="dg-diag-meta">VW Golf · Mohamed T. · 06/03</span>
+            </div>
+            <span class="dg-tag dg-tag-done">Résolu</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini stat CA bar chart -->
+      <div class="dg-card dg-card-chart">
+        <div class="dg-card-head">
+          <div class="dg-card-title-group">
+            <span class="dg-card-eyebrow">REVENUS</span>
+            <h2 class="dg-card-title">CA — 6 derniers mois</h2>
+          </div>
+        </div>
+        <div class="dg-chart">Clients
+
+          <div class="dg-bar-group" >
+            <!-- <div class="dg-bar-wrap">
+              <div class="dg-bar" [style.height.%]="b.pct">
+                <span class="dg-bar-val">{{ b.val }}</span>
+              </div>
+            </div>
+            <span class="dg-bar-label">{{ b.month }}</span> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- MODAL CONFIRMATION SUPPRESSION -->
+<div class="uc-modal-overlay" *ngIf="showConfirmDelete" (click)="annulerDelete()">
+  <div class="uc-modal" (click)="$event.stopPropagation()">
+
+    <div class="uc-modal-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+        <line x1="12" y1="9" x2="12" y2="13"/>
+        <line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+    </div>
+
+    <h3 class="uc-modal-title">Supprimer le compte ?</h3>
+    <p class="uc-modal-text">
+      Cette action est <strong>irréversible</strong>.
+      Toutes vos données seront définitivement supprimées.
+    </p>
+
+    <div class="uc-modal-actions">
+      <button class="uc-modal-cancel" (click)="annulerDelete()">Annuler</button>
+      <button class="uc-modal-confirm" (click)="supprimerCompte()">Oui, supprimer</button>
+    </div>
+
+  </div>
+</div>
+  </main>
+  
+</div>

@@ -1,0 +1,110 @@
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="logo">
+      🚗 AutoDiagnose Pro
+    </div>
+
+   <nav  >
+<a routerLink="/dashboardclient" routerLinkActive="active">
+  🏠 Dashboard
+</a>
+  <a [class.active]="selectedView === 'interventions'" (click)="selectedView = 'interventions'">🛠 Interventions</a>
+
+  <!-- <a [class.active]="selectedView === 'profile'" (click)="selectedView = 'profile'">👤 Modifier profil</a> -->
+
+  <a [class.active]="selectedView === 'appointments'" (click)="selectedView = 'appointments'">📅 Rendez-vous</a>
+
+  <a>💳 Factures</a>
+  <div class="sidebar-bottom">
+  <button class="logout-btn" (click)="logout()">
+    🚪 Déconnexion
+  </button>
+</div>
+</nav>
+</aside>
+  <main class="main">
+
+ <div class="banner">
+
+  <!-- ICON -->
+  <div class="banner-ico">
+    🚗
+  </div>
+
+  <!-- TEXT -->
+  <div class="banner-text">
+    <div class="banner-title">
+  Bienvenue, {{ firstName }} {{ lastName || 'Client' }}
+</div>
+    <div class="banner-sub">
+      Votre véhicule est suivi par {{ garageName }}
+    </div>
+  </div>
+<div class="user-menu" (click)="toggleMenu()">
+
+    <div class="avatar">
+  {{ firstName ? firstName.charAt(0).toUpperCase() : 'C' }}
+</div>
+
+    <span class="user-name">
+      {{ lastName }} {{ firstName }} 
+    </span>
+
+    <div class="dropdown" *ngIf="isMenuOpen">
+      <div class="dropdown-item" (click)="goToProfile()">👤 Modifier profil</div>
+      <div class="dropdown-item" (click)="goToPassword()">🔒 Mot de passe</div>
+      <div class="dropdown-item logout-item" (click)="logout()">🚪 Déconnexion</div>
+    </div>
+
+  </div>
+  <!-- TAG -->
+  <div class="banner-tag">
+    ⏳ Prochaine révision : {{ stats.joursAvantRevision }} jours
+  </div>
+
+</div>
+<div class="edit-card" *ngIf="user">
+
+  <h2>✏️ Modifier Profil</h2>
+
+  <div class="form-group ">
+    <label>CIN</label>
+    <input [(ngModel)]="user.cin" disabled />
+  </div>
+
+  <div class="form-group">
+    <label>Nom</label>
+    <input [(ngModel)]="user.nom" disabled />
+  </div>
+
+  <div class="form-group">
+    <label>Prénom</label>
+    <input [(ngModel)]="user.prenom" disabled />
+  </div>
+
+  <div class="form-group">
+    <label>Email</label>
+    <input [(ngModel)]="user.email" />
+  </div>
+
+  <div class="form-group">
+    <label>Téléphone</label>
+    <input [(ngModel)]="user.telephone" />
+  </div>
+
+  <div class="form-group">
+    <label>Adresse</label>
+    <input [(ngModel)]="user.adresse" />
+  </div>
+
+  <div class="buttons">
+    <button class="btn-cancel" (click)="cancel()">Annuler</button>
+<button class="btn-edit" (click)="goToEdit()">
+  ✏️ Modifier
+</button>
+  </div>
+
+</div>

@@ -19,7 +19,7 @@
         <p class="form-subtitle">Rejoignez AutoDiagnose Pro pour diagnostiquer vos véhicules.</p>
 
         <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-          <div class="field-group">
+          <!-- <div class="field-group">
             <label>Je m'inscris en tant que</label>
             <div class="radio-group">
               <label>
@@ -31,37 +31,57 @@
                 <span>Garagiste </span>
               </label>
             </div>
-          </div>
+          </div> -->
 
           <div class="field-group">
-            <label for="fullName">Nom complet</label>
+            <label for="nom">Nom complet</label>
             <div class="input-wrap">
               <input
-                id="fullName"
+                id="nom"
                 type="text"
-                formControlName="fullName"
-                [class.invalid]="signupForm.get('fullName')?.invalid && signupForm.get('fullName')?.touched"
+                formControlName="nom"
+                    maxlength="50"
+                [class.invalid]="signupForm.get('nom')?.invalid && signupForm.get('nom')?.touched"
                 placeholder="nom et prénom"
               />
             </div>
-            <div class="error" *ngIf="signupForm.get('fullName')?.hasError('required') && signupForm.get('fullName')?.touched">
+            <div class="error" *ngIf="signupForm.get('nom')?.hasError('required') && signupForm.get('nom')?.touched">
               Le nom est obligatoire.
             </div>
-            <div class="error" *ngIf="signupForm.get('fullName')?.hasError('minlength') && signupForm.get('fullName')?.touched">
+            <div class="error" *ngIf="signupForm.get('nom')?.hasError('minlength') && signupForm.get('nom')?.touched">
               Minimum 3 caractères.
+            </div>
+            <div class="error"
+              *ngIf="signupForm.get('nom')?.hasError('pattern') && signupForm.get('nom')?.touched">
+                Le nom ne doit contenir que des lettres.
             </div>
           </div>
 
-          <div class="field-group" *ngIf="signupForm.get('role')?.value === 'garagiste'">
-            <label for="garageName">Nom du garage</label>
+          <div class="field-group" >
+            <label for="Nomgarage">Nom du garage</label>
             <div class="input-wrap">
               <input
-                id="garageName"
+                id="Nomgarage"
                 type="text"
-                formControlName="garageName"
+                formControlName="Nomgarage"
                 placeholder="Ex. Garage Auto Plus"
+                [class.invalid]="signupForm.get('Nomgarage')?.invalid && signupForm.get('Nomgarage')?.touched"
+
               />
             </div>
+            <div class="error"
+            *ngIf="signupForm.get('Nomgarage')?.hasError('required') && signupForm.get('Nomgarage')?.touched">
+                Le nom du garage est obligatoire.
+             </div>
+               <!-- MIN LENGTH -->
+              <div class="error"
+                    *ngIf="signupForm.get('Nomgarage')?.hasError('minlength') && signupForm.get('Nomgarage')?.touched">
+                    Minimum 3 caractères.
+               </div>
+                <div class="error"
+                   *ngIf="signupForm.get('Nomgarage')?.hasError('pattern') && signupForm.get('Nomgarage')?.touched">
+                         Nom invalide (lettres, chiffres et caractères simples uniquement).
+                </div>
           </div>
 
           <div class="field-group">
@@ -84,14 +104,14 @@
           </div>
 
           <div class="field-group">
-            <label for="password">Mot de passe</label>
+            <label for="motdepasse">Mot de passe</label>
             <div class="input-wrap input-wrap-password">
               <input
-                id="password"
+                id="motdepasse"
                 [type]="showPassword ? 'text' : 'password'"
-                formControlName="password"
-                [class.invalid]="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
-                placeholder="••••••••"
+                formControlName="motdepasse"
+                [class.invalid]="signupForm.get('motdepasse')?.invalid && signupForm.get('motdepasse')?.touched"
+                placeholder="votre motdepasse"
               />
               <button type="button" class="input-icon" (click)="togglePasswordVisibility()" aria-label="Afficher le mot de passe">
                 <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -102,12 +122,13 @@
                 </svg>
               </button>
             </div>
-            <div class="error" *ngIf="signupForm.get('password')?.hasError('required') && signupForm.get('password')?.touched">
+            <div class="error" *ngIf="signupForm.get('motdepasse')?.hasError('required') && signupForm.get('motdepasse')?.touched">
               Le mot de passe est obligatoire.
             </div>
-            <div class="error" *ngIf="signupForm.get('password')?.hasError('minlength') && signupForm.get('password')?.touched">
+            <div class="error" *ngIf="signupForm.get('motdepasse')?.hasError('minlength') && signupForm.get('motdepasse')?.touched">
               Minimum 6 caractères.
             </div>
+          
           </div>
 
           <div class="field-group">
@@ -118,7 +139,7 @@
                 [type]="showConfirmPassword ? 'text' : 'password'"
                 formControlName="confirmPassword"
                 [class.invalid]="signupForm.hasError('passwordMismatch') && signupForm.get('confirmPassword')?.touched"
-                placeholder="••••••••"
+                placeholder="Confirmer le mot de passe"
               />
               <button type="button" class="input-icon" (click)="toggleConfirmPasswordVisibility()" aria-label="Afficher">
                 <svg *ngIf="!showConfirmPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -137,7 +158,7 @@
             </div>
           </div>
 
-          <button class="btn btn-signin" type="submit" [disabled]="isSubmitting">
+          <button class="btn btn-signin" type="submit" [disabled]="isSubmitting || signupForm.invalid">
             {{ isSubmitting ? 'Inscription...' : 'Créer mon compte' }}
           </button>
 
@@ -151,4 +172,27 @@
       </div>
     </div>
   </div>
+</div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+
+  <div
+    #toast
+    class="toast align-items-center text-bg-success border-0"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="d-flex">
+      <div class="toast-body">
+        Compte créé avec succès 🎉
+      </div>
+
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+      ></button>
+    </div>
+  </div>
+
 </div>

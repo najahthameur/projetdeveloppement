@@ -1,0 +1,316 @@
+
+<div class="dg-root">
+
+  <!-- ░░ SIDEBAR ░░ -->
+  <aside class="dg-sidebar">
+
+    <div class="dg-logo">
+      <div class="dg-logo-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+          <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+        </svg>
+      </div>
+      <div class="dg-logo-text">
+        <span class="dg-logo-name">AutoDiagnose</span>
+        <span class="dg-logo-sub">Pro Garage</span>
+      </div>
+    </div>
+
+    <div class="dg-garage-badge">
+      <div class="dg-garage-dot"></div>
+      <span>Garage Central Tunis</span>
+    </div>
+
+    <nav class="dg-nav">
+      <span class="dg-nav-label">PRINCIPAL</span>
+      <a class="dg-nav-item dg-active" [routerLink]="['/dashboard']">
+        <div class="dg-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <span>Tableau de bord</span>
+        <div class="dg-active-bar"></div>
+      </a>
+     
+       <a class="dg-nav-item" [routerLink]="['/afficherclient']">
+        <div class="dg-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <span>Affiche clients</span>
+        
+      </a> 
+        <a class="dg-nav-item" [routerLink]="['/listevehicules']">
+  <div class="dg-nav-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17">
+      <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/>
+    </svg>
+  </div>
+  <span>Liste véhicules</span>
+</a>
+      <a class="dg-nav-item" [routerLink]="['/ajouterclient']" >
+        <div class="dg-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <span>Ajouter clients</span>
+        <!-- <span class="dg-count">18</span> -->
+      </a>
+        <!-- <a class="dg-nav-item" [routerLink]="['/ajoutervoiture']">
+  <div class="dg-nav-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17">
+      <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+    </svg>
+  </div>
+
+  <span>Ajouter véhicule</span>
+</a> -->
+      <!-- <a class="dg-nav-item">
+        <div class="dg-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <span>Interventions</span>
+        <span class="dg-count dg-count-hot">2</span>
+      </a> -->
+
+      <span class="dg-nav-label" style="margin-top:1.5rem">OUTILS</span>
+      <a class="dg-nav-item">
+        <div class="dg-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+        </div>
+        <span>Diagnostics OBD</span>
+      </a>
+      <a class="dg-nav-item">
+        <div class="dg-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <span>Planning</span>
+      </a>
+      <a class="dg-nav-item">
+        <div class="dg-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <span>Facturation</span>
+      </a>
+       <button class="dg-logout" (click)="logout()">
+    Déconnexion
+  </button>
+    </nav>
+
+   
+    
+    
+
+  </aside>
+   
+   
+  <!-- ░░ MAIN ░░ -->
+  <main class="dg-main">
+     <header class="dg-topbar">
+         <div>
+        <!-- <h1 class="dg-page-title">Tableau de bord</h1> -->
+        <!-- <p class="dg-page-sub">Mercredi 12 mars 2025 · Garage Central Tunis</p> -->
+      </div> 
+      <div class="dg-topbar-actions">
+       
+  <div class="dg-user-right">
+
+
+
+  <!-- Settings -->
+  <button class="dg-btn-settings"
+          (click)="goToModifierCompte()"
+          title="Modifier mon compte">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06
+               a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09
+               A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83
+               l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09
+               A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83
+               l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09
+               a1.65 1.65 0 0 0 1 1.51a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83
+               l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09
+               a1.65 1.65 0 0 0-1.51 1z"/>
+    </svg>
+  </button>
+
+  <!-- Delete -->
+<!-- Icône Supprimer compte -->
+<button class="dg-btn-delete-top" (click)="ouvrirConfirmDelete()" title="Supprimer mon compte">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+    <polyline points="3 6 5 6 21 6"/>
+    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+    <path d="M10 11v6M14 11v6"/>
+    <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+  </svg>
+</button>
+    <!-- NOM USER (toujours en premier pour alignement propre) -->
+  <div class="dg-username">
+    {{ lastName }}
+  </div>
+</div>
+
+
+      </div>
+    </header>
+   <!-- GRID PRINCIPAL -->
+<div class="dg-grid">
+
+  <!-- Formulaire Ajouter Client -->
+  <div class="dg-card dg-card-form" style="width: 1110px;margin-left: 36px;">
+    <div class="dg-card-head">
+      <h2 class="dg-card-title">Ajouter un Client</h2>
+    </div>
+
+ <form (ngSubmit)="ajouterClient()" class="dg-form" #f="ngForm">
+
+  <!-- CIN -->
+  <div class="dg-form-group">
+    <label for="cin">CIN</label>
+    <input type="text" id="cin" name="cin"
+      [(ngModel)]="client.cin"  
+       pattern="^[0-9]{8}$"
+       #cin="ngModel"
+      required class="dg-input" placeholder="Entrez le CIN"/>
+      <div class="error" *ngIf="cin.invalid && cin.touched">
+             CIN doit contenir 8 chiffres.
+      </div>
+  </div>
+
+  <!-- Nom -->
+  <div class="dg-form-group">
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" name="nom"
+      [(ngModel)]="client.nom"
+      minlength="3"
+       pattern="^[a-zA-ZÀ-ÿ\\s'-]+$"
+       #nom="ngModel"
+      required class="dg-input" placeholder="Entrez le nom"/>
+      <div class="error" *ngIf="nom.invalid && nom.touched">
+       Nom invalide.
+      </div>
+  </div>
+
+  <!-- Prénom -->
+  <div class="dg-form-group">
+    <label for="prenom">Prénom</label>
+    <input type="text" id="prenom" name="prenom"
+      [(ngModel)]="client.prenom"
+      minlength="3"
+       pattern="^[a-zA-ZÀ-ÿ\\s'-]+$"
+       #prenom="ngModel"
+      required class="dg-input" placeholder="Entrez le prénom"/>
+      <div class="error" *ngIf="prenom.invalid && prenom.touched">
+       Prénom invalide.
+      </div>
+  </div>
+
+  <!-- Email -->
+  <div class="dg-form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email"
+      [(ngModel)]="client.email"
+      #email="ngModel"
+      required class="dg-input" placeholder="Entrez l'email"/>
+      
+   <div class="error" *ngIf="email.errors?.['pattern'] && email.touched">
+  Format email invalide (ex: exemple@gmail.com).
+</div>
+  </div>
+
+  <!-- Téléphone -->
+  <div class="dg-form-group">
+    <label for="telephone">Téléphone</label>
+    <input type="tel" id="telephone" name="telephone"
+      [(ngModel)]="client.telephone"
+      pattern="^[0-9]{8}$"
+      #telephone="ngModel"
+      required class="dg-input" placeholder="Entrez le téléphone"/>
+      <div class="error" *ngIf="telephone.invalid && telephone.touched">
+       Téléphone invalide.
+      </div>
+  </div>
+
+  <!-- Adresse -->
+  <div class="dg-form-group">
+    <label for="adresse">Adresse</label>
+    <input type="text" id="adresse" name="adresse"
+      [(ngModel)]="client.adresse"
+       minlength="5"
+    pattern="^[a-zA-Z0-9À-ÿ\s,'()./-]+$"
+    #adresse="ngModel"
+      required class="dg-input" placeholder="Entrez l'adresse"/>
+      <!-- required -->
+  <div class="error" *ngIf="adresse.errors?.['required'] && adresse.touched">
+    Adresse obligatoire.
+  </div>
+
+  <!-- minlength -->
+  <div class="error" *ngIf="adresse.errors?.['minlength'] && adresse.touched">
+    Adresse trop courte.
+  </div>
+
+  <!-- pattern -->
+  <div class="error" *ngIf="adresse.errors?.['pattern'] && adresse.touched">
+    Adresse invalide.
+  </div>
+  </div>
+   <!-- Mot de passe -->
+<div class="dg-form-group">
+  <label for="motdepasse">Mot de passe</label>
+  <input type="password" id="motdepasse" name="motdepasse"
+    [(ngModel)]="client.motdepasse"
+    minlength="6"
+    pattern="^[a-zA-Z0-9]{6,}$"
+    #pwd="ngModel"
+    required class="dg-input" placeholder="Entrez le mot de passe"/>
+    <!-- required -->
+  <div class="error" *ngIf="pwd.errors?.['required'] && pwd.touched">
+    Mot de passe obligatoire.
+  </div>
+
+  <!-- minlength -->
+  <div class="error" *ngIf="pwd.errors?.['minlength'] && pwd.touched">
+    Minimum 6 caractères.
+  </div>
+
+  <!-- pattern -->
+  <div class="error" *ngIf="pwd.errors?.['pattern'] && pwd.touched">
+       Lettres et chiffres uniquement.
+
+  </div>
+</div>
+  <!-- Bouton -->
+  <button type="submit" class="dg-btn-primary" [disabled]="f.invalid">
+    Ajouter
+  </button>
+   
+</form>
+  </div>
+
+  <!-- Ici tu peux laisser tes autres cartes comme Interventions, Planning, Diagnostics… -->
+</div>
+   
+
+  <div class="custom-alert" *ngIf="showConfirmDelete">
+
+  <div class="alert-box">
+
+    <div class="alert-icon">⚠️</div>
+
+    <h3>Supprimer le compte ?</h3>
+
+    <p>
+      Cette action est irréversible.<br>
+      Toutes vos données seront supprimées définitivement.
+    </p>
+
+    <div class="alert-buttons">
+      <button class="btn-cancel" (click)="annulerDelete()">Annuler</button>
+      <button class="btn-delete" (click)="confirmerDelete()">Supprimer</button>
+    </div>
+
+  </div>
+
+</div>  
+
+  </main>
+</div>

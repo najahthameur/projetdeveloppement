@@ -37,59 +37,126 @@
             </label>
           </div>
         </div>
+       <!-- 🔵 CLIENT FIELDS -->
+<div *ngIf="loginForm.get('role')?.value === 'client'">
 
-        <div class="field-group">
-          <label for="email">Email</label>
-          <div class="input-wrap">
-            <input
-              id="email"
-              type="email"
-              formControlName="email"
-              [class.invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
-              placeholder="exemple@email.com"
-            />
-          </div>
-          <div class="error" *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched">
-            L’email est obligatoire.
-          </div>
-          <div class="error" *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched">
-            Email invalide.
-          </div>
-        </div>
+  <!-- CIN -->
+  <div class="field-group">
+    <label for="cin">CIN</label>
 
-        <div class="field-group">
-          <label for="password">Mot de passe</label>
-          <div class="input-wrap input-wrap-password">
-            <input
-              id="password"
-              [type]="showPassword ? 'text' : 'password'"
-              formControlName="password"
-              [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
-              placeholder="••••••••"
-            />
-            <button type="button" class="input-icon" (click)="togglePasswordVisibility()" aria-label="Afficher le mot de passe">
-              <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-              </svg>
-              <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>
-              </svg>
-            </button>
-          </div>
-          <div class="error" *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
-            Le mot de passe est obligatoire.
-          </div>
-          <div class="error" *ngIf="loginForm.get('password')?.hasError('minlength') && loginForm.get('password')?.touched">
-            Minimum 6 caractères.
-          </div>
-        </div>
+    <div class="input-wrap">
+      <input
+        id="cin"
+        type="text"
+        formControlName="cin"
+        placeholder="CIN"
+        maxlength="8"
+        pattern="[0-9]{8}"
+        [class.invalid]="loginForm.get('cin')?.invalid && loginForm.get('cin')?.touched"
+      />
+    </div>
+
+    <div class="error"
+         *ngIf="loginForm.get('cin')?.hasError('required') && loginForm.get('cin')?.touched">
+       CIN doit contenir 8 chiffres.
+    </div>
+  </div>
+
+<!-- MOT DE PASSE CLIENT -->
+  <div class="field-group">
+    <label for="motdepasse">Mot de passe</label>
+
+    <div class="input-wrap input-wrap-password">
+      <input
+        id="motdepasse"
+        [type]="showPassword ? 'text' : 'password'"
+        formControlName="motdepasse"
+        placeholder="votre mot de passe"
+          minlength="6"
+        [class.invalid]="loginForm.get('motdepasse')?.invalid && loginForm.get('motdepasse')?.touched"
+      />
+       <button type="button" class="input-icon" (click)="togglePasswordVisibility()">
+      👁
+    </button>
+    </div>
+
+    <div class="error"
+         *ngIf="loginForm.get('motdepasse')?.hasError('required') && loginForm.get('motdepasse')?.touched">
+      Mot de passe obligatoire.
+    </div>
+    <div class="error"
+  *ngIf="loginForm.get('motdepasse')?.hasError('minlength') && loginForm.get('motdepasse')?.touched">
+  Minimum 6 caractères.
+</div>
+  </div>
+
+</div>
+        <!-- 🔴 EMAIL (GARAGISTE ) -->
+<!-- 🔧 GARAGISTE ONLY -->
+<div *ngIf="loginForm.get('role')?.value === 'garagiste'">
+
+  <!-- EMAIL -->
+  <div class="field-group">
+    <label for="email">Email</label>
+
+    <div class="input-wrap">
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="exemple@email.com"
+        [class.invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+      />
+    </div>
+
+    <div class="error"
+         *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched">
+      L’email est obligatoire.
+    </div>
+    <div class="error"
+  *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched">
+  Email invalide.
+</div>
+  </div>
+
+  <!-- MOT DE PASSE -->
+  <div class="field-group">
+    <label for="motdepasse">Mot de passe</label>
+
+    <div class="input-wrap input-wrap-password">
+      <input
+        id="motdepasse"
+        [type]="showPassword ? 'text' : 'password'"
+        formControlName="motdepasse"
+        placeholder="votre mot de passe"
+      />
+
+      <button type="button" class="input-icon" (click)="togglePasswordVisibility()">
+        👁
+      </button>
+    </div>
+
+    <div class="error"
+         *ngIf="loginForm.get('motdepasse')?.hasError('required') && loginForm.get('motdepasse')?.touched">
+      Le mot de passe est obligatoire.
+    </div>
+
+    <div class="error"
+         *ngIf="loginForm.get('motdepasse')?.hasError('minlength') && loginForm.get('motdepasse')?.touched">
+      Minimum 6 caractères.
+    </div>
+  </div>
+
+</div>
 
         <div class="form-options">
          
-          <a href="#" class="link">Mot de passe oublié ?</a>
+          <a class="link" routerLink="/motpasseoublie">
+  Mot de passe oublié ?
+</a>
         </div>
 
-        <button class="btn btn-signin" type="submit" [disabled]="isSubmitting">
+        <button class="btn btn-signin" type="submit" [disabled]="isSubmitting|| loginForm.invalid">
           {{ isSubmitting ? 'Connexion...' : 'Se connecter' }}
         </button>
 

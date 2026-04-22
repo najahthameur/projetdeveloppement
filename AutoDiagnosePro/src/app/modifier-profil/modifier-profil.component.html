@@ -1,0 +1,110 @@
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="logo">
+      🚗 AutoDiagnose Pro
+    </div>
+
+   <nav  >
+<a routerLink="/dashboardclient" routerLinkActive="active">
+  🏠 Dashboard
+</a>
+  <a [class.active]="selectedView === 'interventions'" (click)="selectedView = 'interventions'">🛠 Interventions</a>
+
+  <!-- <a [class.active]="selectedView === 'profile'" (click)="selectedView = 'profile'">👤 Modifier profil</a> -->
+
+  <a [class.active]="selectedView === 'appointments'" (click)="selectedView = 'appointments'">📅 Rendez-vous</a>
+
+  <a>💳 Factures</a>
+  <div class="sidebar-bottom">
+  <button class="logout-btn" (click)="logout()">
+    🚪 Déconnexion
+  </button>
+</div>
+</nav>
+
+  <!-- <div class="user">
+  <div class="avatar">
+    {{ lastName ? lastName.charAt(0).toUpperCase() : 'C' }}
+  </div>
+
+  <div>
+    <p>{{ firstName }} {{ lastName }}</p>
+  </div>
+</div> -->
+
+    <!-- <button class="logout" (click)="logout()">Déconnexion</button> -->
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+ <div class="banner">
+
+  <!-- ICON -->
+  <div class="banner-ico">
+    🚗
+  </div>
+
+  <!-- TEXT -->
+  <div class="banner-text">
+    <div class="banner-title">
+  Bienvenue, {{ firstName }} {{ lastName || 'Client' }}
+</div>
+    <div class="banner-sub">
+      Votre véhicule est suivi par {{ garageName }}
+    </div>
+  </div>
+<div class="user-menu" (click)="toggleMenu()">
+
+    <div class="avatar">
+  {{ firstName ? firstName.charAt(0).toUpperCase() : 'C' }}
+</div>
+
+    <span class="user-name">
+      {{ lastName }} {{ firstName }} 
+    </span>
+
+    <div class="dropdown" *ngIf="isMenuOpen">
+      <div class="dropdown-item" (click)="goToProfile()">👤 Modifier profil</div>
+      <div class="dropdown-item" (click)="goToPassword()">🔒 Mot de passe</div>
+      <div class="dropdown-item logout-item" (click)="logout()">🚪 Déconnexion</div>
+    </div>
+
+  </div>
+  <!-- TAG -->
+  <div class="banner-tag">
+    ⏳ Prochaine révision : {{ stats.joursAvantRevision }} jours
+  </div>
+
+</div>
+ <div class="profile-card" *ngIf="user">
+    <div class="profile-avatar">
+  {{ firstName ? firstName.charAt(0).toUpperCase() : 'C' }}
+</div>
+
+    <h3>👤 Mon Profil</h3>
+
+    <div class="profile-info">
+      <p><b>CIN :</b> {{ user.cin }}</p>
+      <p><b>Nom :</b> {{ user.nom }}</p>
+      <p><b>Prénom :</b> {{ user.prenom }}</p>
+      <p><b>Email :</b> {{ user.email }}</p>
+      <p><b>Téléphone :</b> {{ user.telephone }}</p>
+      <p><b>Adresse :</b> {{ user.adresse}}</p>
+    </div>
+
+    <button class="btn-edit" (click)="goToEditProfile()">
+      ✏️ Modifier
+    </button>
+
+  </div>
+
+   
+  
+  </main>
+
+</div>

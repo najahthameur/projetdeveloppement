@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AutoDiagnosePro';
+    activeItem: string = 'dashboard';
+
+  setActive(item: string) {
+    this.activeItem = item;
+  }
 }

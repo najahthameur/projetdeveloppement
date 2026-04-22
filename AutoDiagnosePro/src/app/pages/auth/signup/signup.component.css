@@ -257,4 +257,18 @@
     min-height: auto;
     padding: 2rem 1.5rem;
   }
+
+}
+.toast-container {
+  z-index: 9999;
+}
+
+.snackbar-success {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  font-weight: bold;
+}
+.snackbar-success .mdc-snackbar__surface {
+  background: transparent !important;
+  box-shadow: none !important;
 }

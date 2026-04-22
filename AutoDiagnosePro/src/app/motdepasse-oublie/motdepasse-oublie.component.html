@@ -1,0 +1,155 @@
+<!-- ══════════════════════════════════════════
+     AutoDiagnose Pro — Mot de passe oublié
+══════════════════════════════════════════ -->
+
+<!-- ── Alert Modal (s'affiche après reset réussi) ── -->
+<div class="alert-overlay" *ngIf="showAlert" (click)="onOverlayClick($event)">
+  <div class="alert-box" id="alertBox">
+
+    <!-- Particules flottantes -->
+    <div class="particles">
+      <span class="p1"></span>
+      <span class="p2"></span>
+      <span class="p3"></span>
+      <span class="p4"></span>
+      <span class="p5"></span>
+      <span class="p6"></span>
+    </div>
+
+    <div class="alert-body">
+
+      <!-- SVG check animé -->
+      <div class="check-ring">
+        <svg class="check-svg" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+          <circle class="check-circle" cx="26" cy="26" r="23" fill="none" stroke-width="2.5"/>
+          <polyline class="check-tick" points="14,27 22,35 38,17" fill="none"
+                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <span class="alert-badge">SUCCÈS</span>
+      <h3 class="alert-title">Mot de passe réinitialisé !</h3>
+      <p class="alert-text">
+        Votre mot de passe a été mis à jour avec succès.<br>
+        Connectez-vous avec vos nouveaux identifiants.
+      </p>
+
+      <!-- Barre de countdown -->
+      <div class="countdown-wrap">
+        <div class="countdown-track">
+          <div class="countdown-bar"></div>
+        </div>
+        <span class="countdown-label">
+          Redirection automatique dans <strong>{{ countdown }}s</strong>
+        </span>
+      </div>
+
+    </div>
+
+    <div class="alert-footer">
+      <button class="alert-btn-secondary" (click)="closeAlert()">
+  Rester sur la page
+</button>
+     <button class="alert-btn-primary" (click)="closeAlertAndRedirect()">
+  Se connecter
+</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Page principale ── -->
+<div class="forgot-page">
+  <div class="card" [formGroup]="form">
+
+    <!-- Brand -->
+    <div class="brand">
+      <div class="brand-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+          <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+        </svg>
+      </div>
+      <span class="brand-name">AutoDiagnose Pro</span>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+      <div class="icon-circle">🔐</div>
+      <h2>Mot de passe oublié</h2>
+      <p>Récupérez l'accès à votre espace garage<br>en quelques secondes.</p>
+    </div>
+
+    <!-- Step indicator -->
+    <div class="step-indicator">
+      <div class="step-dot" [class.active]="step === 1" [class.done]="step > 1">
+        <ng-container *ngIf="step > 1">✓</ng-container>
+        <ng-container *ngIf="step <= 1">1</ng-container>
+      </div>
+      <div class="step-line" [class.done]="step > 1"></div>
+      <div class="step-dot" [class.active]="step === 2">2</div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div *ngIf="step === 1" class="step">
+
+      <label>Vous êtes</label>
+      <div class="select-wrap">
+        <select formControlName="role">
+          <option value="client">Client</option>
+          <option value="garagiste">Garagiste</option>
+        </select>
+      </div>
+
+      <div class="input-box" *ngIf="form.value.role === 'client'">
+        <label>CIN</label>
+        <input type="text" formControlName="cin"
+               placeholder="Votre numéro CIN (8 chiffres)" maxlength="8"/>
+      </div>
+
+      <div class="input-box" *ngIf="form.value.role === 'garagiste'">
+        <label>Adresse email</label>
+        <input type="email" formControlName="email" placeholder="exemple@email.com"/>
+      </div>
+
+      <button class="btn-primary" (click)="sendCode()" [disabled]="form.invalid || isSubmitting">
+        {{ isSubmitting ? 'Envoi en cours...' : 'Envoyer le code de récupération →' }}
+      </button>
+
+    </div>
+
+    <!-- STEP 2 -->
+    <div *ngIf="step === 2" class="step">
+
+      <label>Nouveau mot de passe</label>
+      <div class="input-wrap-password">
+        <input [type]="showPassword ? 'text' : 'password'"
+               formControlName="newPassword"
+               placeholder="Minimum 6 caractères"/>
+        <button type="button" class="toggle-eye" (click)="togglePassword()">
+          {{ showPassword ? '🙈' : '👁' }}
+        </button>
+      </div>
+
+      <button class="btn-primary" (click)="resetPassword()"
+              [disabled]="form.get('newPassword')?.invalid || isSubmitting">
+        {{ isSubmitting ? 'Réinitialisation...' : 'Réinitialiser le mot de passe' }}
+      </button>
+
+    </div>
+
+    <!-- Message feedback -->
+    <p class="message" [class.success]="message.includes('✔')">{{ message }}</p>
+
+    <div class="divider"><span>ou</span></div>
+
+    <a routerLink="/login" class="back">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2.5"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Retour à la connexion
+    </a>
+
+  </div>
+</div>
